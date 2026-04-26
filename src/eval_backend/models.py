@@ -10,10 +10,16 @@ class Status(Enum):
 
 
 @dataclass
+class ExpectedRule:
+    required_fields: list[str] = field(default_factory=list)
+    date_fields: list[str] = field(default_factory=list)
+    require_valid_json: bool = True
+
+@dataclass
 class Case:
     id: str
     input: str
-    expected_rule: str
+    expected_rule: ExpectedRule
 
 @dataclass
 class Dataset:
