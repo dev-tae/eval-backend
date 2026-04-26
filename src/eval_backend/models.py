@@ -37,12 +37,19 @@ class Result:
     reason: str
 
 @dataclass
+class RunSummary:
+    total_cases: int
+    total_passed: int
+    total_failed: int
+    pass_rate: float
+
+@dataclass
 class Run:
     id: str
     dataset_id: str
     status: Status
+    run_summary: RunSummary
     results: list[Result] = field(default_factory=list)
     created_at: datetime | None = None
     finished_at: datetime | None = None
-
 
